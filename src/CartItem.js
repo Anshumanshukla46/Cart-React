@@ -11,7 +11,17 @@ class CartItem extends React.Component {
             qty: 1,
             img: ""
         }
+
+        this.increaseQuantity = this.increaseQuantity.bind(this)
     }
+
+    // adding eventListeners by binding(because without that it will get refence to constructor)
+
+    // this arrow function is same as -> this.increaseQuantity = this.increaseQuantity.bind(this)
+    increaseQuantity = () => {
+        console.log("this.state", this);
+    }
+
 
     // to convert class component to react component
     render() {
@@ -37,9 +47,23 @@ class CartItem extends React.Component {
                     <div className="cart-item-actions">
                         {/* Buttons */}
 
-                        <img alt="increase" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/748/748113.png" />
-                        <img alt="decrease" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/992/992683.png" />
-                        <img alt="delete" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" />
+                        <img
+                            alt="increase"
+                            className="action-icons"
+                            src="https://cdn-icons-png.flaticon.com/512/748/748113.png"
+                            onClick={this.increaseQuantity}
+                        // binded just because for calling the constructor
+                        />
+
+                        <img
+                            alt="decrease"
+                            className="action-icons"
+                            src="https://cdn-icons-png.flaticon.com/512/992/992683.png" />
+
+                        <img
+                            alt="delete"
+                            className="action-icons"
+                            src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" />
 
                     </div>
 
