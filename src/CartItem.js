@@ -4,7 +4,7 @@ class CartItem extends React.Component {
 
     // State
     constructor() {
-        super(); // calling constructor of super class
+        super(); // calling constructor of super class  (React.Component)
         this.state = {
             price: 999,
             title: "Mobile Phone",
@@ -12,14 +12,44 @@ class CartItem extends React.Component {
             img: ""
         }
 
-        this.increaseQuantity = this.increaseQuantity.bind(this)
+        // this.increaseQuantity = this.increaseQuantity.bind(this)
     }
 
-    // adding eventListeners by binding(because without that it will get refence to constructor)
+    // adding eventListeners by binding(because without that it will not get refence to constructor)
 
     // this arrow function is same as -> this.increaseQuantity = this.increaseQuantity.bind(this)
     increaseQuantity = () => {
-        console.log("this.state", this);
+        // console.log("this.state", this.state);
+
+        // setState form React.component for increasing quantity by plus button
+
+        // setState will re-render the object
+        // two ways of implementing:
+
+        // way 1: it will do swallow merging 
+        // this.setState(
+        //     {
+        //         qty: this.state.qty + 1
+        //     }
+        // );
+
+
+        // way 2: if i require prevState then i will use this
+        this.setState((prevState) => {
+            return {
+                qty: prevState.qty + 1
+            }
+        });
+    }
+
+
+    decreaseQuantity = () => {
+        console.log(this.state)
+        this.setState((prevState) => {
+            return {
+                qty: prevState.qty - 1
+            }
+        });
     }
 
 
@@ -34,7 +64,7 @@ class CartItem extends React.Component {
                 <div className="left-block">
 
                     {/* added style */}
-                    <img style={styles.image} />
+                    <img style={styles["image"]} />
                 </div>
 
                 <div className="right-block">
@@ -58,7 +88,9 @@ class CartItem extends React.Component {
                         <img
                             alt="decrease"
                             className="action-icons"
-                            src="https://cdn-icons-png.flaticon.com/512/992/992683.png" />
+                            src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
+                            onClick={this.decreaseQuantity}
+                        />
 
                         <img
                             alt="delete"
@@ -87,5 +119,5 @@ const styles = {
 }
 
 
-// After all item it is must to write
+// After changes it is must to write -
 export default CartItem;
