@@ -79,7 +79,6 @@ const CartItem = (props) => {
 
     // object structuring
     const { price, title, qty } = props.product;
-
     const {
         product,
         onIncreaseQuantity,
@@ -87,12 +86,13 @@ const CartItem = (props) => {
         onDeleteProduct
     } = props;
 
+
     return (
         <div className="cart-item">
             <div className="left-block">
 
                 {/* added style */}
-                <img style={styles["image"]} />
+                <img style={styles.image} />
             </div>
 
             <div className="right-block">
@@ -102,6 +102,7 @@ const CartItem = (props) => {
                 <div style={{ fontSize: 25 }}>{title}</div>
                 <div style={{ color: "gray" }}>Rs {price}</div>
                 <div style={{ color: "gray" }}>Qty: {qty}</div>
+
                 <div className="cart-item-actions">
                     {/* Buttons */}
 
@@ -113,20 +114,20 @@ const CartItem = (props) => {
                     // binded just because for calling the constructor
                     />
 
+
                     <img
                         alt="decrease"
                         className="action-icons"
-                        src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
+                        src="https://cdn-icons-png.flaticon.com/512/2801/2801932.png"
                         onClick={() => onDecreaseQuantity(product)}
                     />
+
 
                     <img
                         alt="delete"
                         className="action-icons"
-                        src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png"
-                        onClick={() =>
-                            onDeleteProduct(product.id)
-                        }
+                        src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"
+                        onClick={() => onDeleteProduct(product.id)}
                     />
 
                 </div>
@@ -145,7 +146,7 @@ const styles = {
         height: 110,
         width: 110,
         borderRadius: 4,
-        background: "gray"
+        background: '#ccc'
     }
 }
 
