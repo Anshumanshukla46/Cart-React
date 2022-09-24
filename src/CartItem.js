@@ -13,7 +13,33 @@ class CartItem extends React.Component {
         }
 
         // this.increaseQuantity = this.increaseQuantity.bind(this)
+
+        // this.testing();
     }
+
+    /*
+        testing() {
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('done');
+                }, 5000);
+            })
+    
+            promise.then(() => {
+                // in promise,ajax 'setState' act like a synchronous call
+                this.setState({ qty: this.state.qty + 10 });
+    
+                this.setState({ qty: this.state.qty + 10 });
+                this.setState({ qty: this.state.qty + 10 });
+    
+                // but after react 17 whole setState is asynchronous
+    
+    
+                // due to 'synchronous call' this will be up-to-date
+                console.log('state', this.state);
+            })
+        }
+    */
 
     // adding eventListeners by binding(because without that it will not get refence to constructor)
 
@@ -22,6 +48,7 @@ class CartItem extends React.Component {
         // console.log("this.state", this.state);
 
         // setState form React.component for increasing quantity by plus button
+        // setState will re-render
 
         // setState will re-render the object
         // two ways of implementing:
@@ -30,7 +57,7 @@ class CartItem extends React.Component {
         // this.setState(
         //     {
         //         qty: this.state.qty + 1
-        //     }
+        //     },()=> {}
         // );
 
 
@@ -39,12 +66,18 @@ class CartItem extends React.Component {
             return {
                 qty: prevState.qty + 1
             }
+        }, () => {
+            console.log('this.state', this.state)
         });
     }
 
 
     decreaseQuantity = () => {
-        console.log(this.state)
+        const { qty } = this.state;
+
+        if (qty === 0) {
+            return;
+        }
         this.setState((prevState) => {
             return {
                 qty: prevState.qty - 1
