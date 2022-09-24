@@ -48,7 +48,7 @@ class Cart extends React.Component {
         });
     }
 
-
+    // product as argument
     handleDecreaseQuantity = (product) => {
         console.log("decrease the qty", product);
         const { products } = this.state;
@@ -64,7 +64,17 @@ class Cart extends React.Component {
         });
     }
 
+    // id as argument
+    handleDeleteProduct = (id) => {
+        const { products } = this.state;
+        const items = products.filter((item) => item.id !== id); // {[array]}
 
+        this.setState({
+            products: items
+        })
+
+
+    }
 
     render() {
 
@@ -91,6 +101,8 @@ class Cart extends React.Component {
                         onIncreaseQuantity={this.handleIncreaseQuantity}
 
                         onDecreaseQuantity={this.handleDecreaseQuantity}
+
+                        onDeleteProduct={this.handleDeleteProduct}
 
                     />)
                 })}
