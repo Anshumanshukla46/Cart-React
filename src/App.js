@@ -1,7 +1,7 @@
 import React from 'react';
 
 // using the cart
-import CartItem from './CartItem';
+import Cart from './Cart';
 
 // Root component
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
 
       {/* using after importing  */}
-      <CartItem />
+      <Cart />
 
     </div>
   );
