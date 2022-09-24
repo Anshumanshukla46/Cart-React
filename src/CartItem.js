@@ -1,6 +1,6 @@
 import React from "react";
 
-class CartItem extends React.Component {
+const CartItem = (props) => {
 
     // setState in promise
     /*
@@ -75,69 +75,65 @@ class CartItem extends React.Component {
 
 
     // to convert class component to react component
-    render() {
+    // accesing the passed 'props'
 
-        // accesing the passed 'props'
-        console.log(this.props);
+    // object structuring
+    const { price, title, qty } = props.product;
 
-        // object structuring
-        const { price, title, qty } = this.props.product;
+    const {
+        product,
+        onIncreaseQuantity,
+        onDecreaseQuantity,
+        onDeleteProduct
+    } = props;
 
-        const {
-            product,
-            onIncreaseQuantity,
-            onDecreaseQuantity,
-            onDeleteProduct
-        } = this.props;
+    return (
+        <div className="cart-item">
+            <div className="left-block">
 
-        return (
-            <div className="cart-item">
-                <div className="left-block">
-
-                    {/* added style */}
-                    <img style={styles["image"]} />
-                </div>
-
-                <div className="right-block">
-
-                    {/* can add object directly */}
-
-                    <div style={{ fontSize: 25 }}>{title}</div>
-                    <div style={{ color: "gray" }}>Rs {price}</div>
-                    <div style={{ color: "gray" }}>Qty: {qty}</div>
-                    <div className="cart-item-actions">
-                        {/* Buttons */}
-
-                        <img
-                            alt="increase"
-                            className="action-icons"
-                            src="https://cdn-icons-png.flaticon.com/512/748/748113.png"
-                            onClick={() => onIncreaseQuantity(product)}
-                        // binded just because for calling the constructor
-                        />
-
-                        <img
-                            alt="decrease"
-                            className="action-icons"
-                            src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
-                            onClick={() => onDecreaseQuantity(product)}
-                        />
-
-                        <img
-                            alt="delete"
-                            className="action-icons"
-                            src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png"
-                            onClick={() =>
-                                onDeleteProduct(product.id)
-                            }
-                        />
-
-                    </div>
-
-                </div>
+                {/* added style */}
+                <img style={styles["image"]} />
             </div>
-        );
-    }
+
+            <div className="right-block">
+
+                {/* can add object directly */}
+
+                <div style={{ fontSize: 25 }}>{title}</div>
+                <div style={{ color: "gray" }}>Rs {price}</div>
+                <div style={{ color: "gray" }}>Qty: {qty}</div>
+                <div className="cart-item-actions">
+                    {/* Buttons */}
+
+                    <img
+                        alt="increase"
+                        className="action-icons"
+                        src="https://cdn-icons-png.flaticon.com/512/748/748113.png"
+                        onClick={() => onIncreaseQuantity(product)}
+                    // binded just because for calling the constructor
+                    />
+
+                    <img
+                        alt="decrease"
+                        className="action-icons"
+                        src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
+                        onClick={() => onDecreaseQuantity(product)}
+                    />
+
+                    <img
+                        alt="delete"
+                        className="action-icons"
+                        src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png"
+                        onClick={() =>
+                            onDeleteProduct(product.id)
+                        }
+                    />
+
+                </div>
+
+            </div>
+        </div>
+    );
 }
 
 
