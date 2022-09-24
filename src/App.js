@@ -18,7 +18,7 @@ class App extends React.Component {
           price: 9,
           title: "Watch",
           qty: 1,
-          img: "",
+          img: "https://upload.wikimedia.org/wikipedia/commons/5/5a/A_popular_model_of_ELLIOT_FRANZ%C3%89N.jpg",
           id: 1
         },
 
@@ -26,7 +26,7 @@ class App extends React.Component {
           price: 99,
           title: "Mobile Phone",
           qty: 10,
-          img: "",
+          img: "https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/03/1-Realme-GT-2-Pro-lead-scaled.jpg",
           id: 2
         },
 
@@ -34,7 +34,7 @@ class App extends React.Component {
           price: 999,
           title: "Laptop",
           qty: 4,
-          img: "https://images.unsplash.com/photo-1504707748692-419802cf939d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1330&q=80",
+          img: "https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/01/PREDATOR-HELIOS-300-PH317-56-05-scaled.jpg",
           id: 3
         }
       ]
@@ -100,20 +100,39 @@ class App extends React.Component {
   }
 
 
+  getCartTotal = () => {
+    const { products } = this.state;
+
+    let cartTotal = 0;
+
+    products.map((product) => {
+      cartTotal = cartTotal + product.qty * product.price;
+    });
+
+    return cartTotal;
+  }
+
   render() {
     const { products } = this.state;
     return (
       <div className="App">
+
         {/* using after importing  */}
         <Navbar count={this.getCartCount()} />
-        {/* passing via props */}
 
+        {/* passing via props */}
         <Cart
           products={products}
+
           onIncreaseQuantity={this.handleIncreaseQuantity}
+
           onDecreaseQuantity={this.handleDecreaseQuantity}
+
           onDeleteProduct={this.handleDeleteProduct}
         />
+
+        <div style={{ fontSize: 20, padding: 20 }}>TOTAL: {this.getCartTotal()}</div>
+
       </div>
     );
   }

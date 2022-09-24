@@ -92,7 +92,9 @@ const CartItem = (props) => {
             <div className="left-block">
 
                 {/* added style */}
-                <img style={styles.image} />
+                <img style={styles.image}
+                    src={product.img}
+                />
             </div>
 
             <div className="right-block">
@@ -109,7 +111,7 @@ const CartItem = (props) => {
                     <img
                         alt="increase"
                         className="action-icons"
-                        src="https://cdn-icons-png.flaticon.com/512/748/748113.png"
+                        src="https://cdn-icons-png.flaticon.com/512/3303/3303893.png"
                         onClick={() => onIncreaseQuantity(product)}
                     // binded just because for calling the constructor
                     />
@@ -118,7 +120,7 @@ const CartItem = (props) => {
                     <img
                         alt="decrease"
                         className="action-icons"
-                        src="https://cdn-icons-png.flaticon.com/512/2801/2801932.png"
+                        src="https://cdn-icons-png.flaticon.com/512/1828/1828906.png"
                         onClick={() => onDecreaseQuantity(product)}
                     />
 
