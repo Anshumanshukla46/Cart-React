@@ -27,49 +27,51 @@ class CartItem extends React.Component {
         }
     */
 
-    // adding eventListeners by binding(because without that it will not get refence to constructor)
-
-    // this arrow function is same as -> this.increaseQuantity = this.increaseQuantity.bind(this)
-    increaseQuantity = () => {
-        // console.log("this.state", this.state);
-
-        // setState form React.component for increasing quantity by plus button
-        // setState will re-render
-
-        // setState will re-render the object
-        // two ways of implementing:
-
-        // way 1: it will do swallow merging 
-        // this.setState(
-        //     {
-        //         qty: this.state.qty + 1
-        //     },()=> {}
-        // );
-
-
-        // way 2: if i require prevState then i will use this
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty + 1
-            }
-        }, () => {
-            console.log('this.state', this.state)
-        });
-    }
-
-
-    decreaseQuantity = () => {
-        const { qty } = this.state;
-
-        if (qty === 0) {
-            return;
+    /*        
+        adding eventListeners by binding(because without that it will not get refence to constructor)
+    
+        this arrow function is same as -> this.increaseQuantity = this.increaseQuantity.bind(this)
+        increaseQuantity = () => {
+            console.log("this.state", this.state);
+    
+            setState form React.component for increasing quantity by plus button
+            setState will re-render
+    
+            setState will re-render the object
+            two ways of implementing:
+    
+            way 1: it will do swallow merging 
+            this.setState(
+                {
+                    qty: this.state.qty + 1
+                },()=> {}
+            );
+    
+    
+            way 2: if i require prevState then i will use this
+            this.setState((prevState) => {
+                return {
+                    qty: prevState.qty + 1
+                }
+            }, () => {
+                console.log('this.state', this.state)
+            });
         }
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty - 1
+    
+    
+        decreaseQuantity = () => {
+            const { qty } = this.state;
+    
+            if (qty === 0) {
+                return;
             }
-        });
-    }
+            this.setState((prevState) => {
+                return {
+                    qty: prevState.qty - 1
+                }
+            });
+        }
+    */
 
 
     // to convert class component to react component
@@ -103,7 +105,7 @@ class CartItem extends React.Component {
                             alt="increase"
                             className="action-icons"
                             src="https://cdn-icons-png.flaticon.com/512/748/748113.png"
-                            onClick={this.increaseQuantity}
+                            onClick={() => this.props.onIncreaseQuantity(this.props.product)}
                         // binded just because for calling the constructor
                         />
 
@@ -111,7 +113,7 @@ class CartItem extends React.Component {
                             alt="decrease"
                             className="action-icons"
                             src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
-                            onClick={this.decreaseQuantity}
+                            onClick={() => this.props.onDecreaseQuantity(this.props.product)}
                         />
 
                         <img
