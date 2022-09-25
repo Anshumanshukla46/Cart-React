@@ -5,6 +5,8 @@ import Cart from './Cart';
 
 import Navbar from './Navbar';
 
+import * as firebase from 'firebase';
+
 // Root component
 class App extends React.Component {
 
@@ -13,31 +15,7 @@ class App extends React.Component {
   constructor() {
     super(); // calling constructor of super class  (React.Component)
     this.state = {
-      products: [
-        {
-          price: 9,
-          title: "Watch",
-          qty: 1,
-          img: "https://upload.wikimedia.org/wikipedia/commons/5/5a/A_popular_model_of_ELLIOT_FRANZ%C3%89N.jpg",
-          id: 1
-        },
-
-        {
-          price: 99,
-          title: "Mobile Phone",
-          qty: 10,
-          img: "https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/03/1-Realme-GT-2-Pro-lead-scaled.jpg",
-          id: 2
-        },
-
-        {
-          price: 999,
-          title: "Laptop",
-          qty: 4,
-          img: "https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/01/PREDATOR-HELIOS-300-PH317-56-05-scaled.jpg",
-          id: 3
-        }
-      ]
+      products: []
     }
 
     // this.increaseQuantity = this.increaseQuantity.bind(this);
