@@ -3,9 +3,14 @@ import React from 'react';
 
 const Navbar = (props) => {
     return (
+
         <div style={styles.nav}>
 
+            <h1>Fetching Data from Firebase</h1>
+
             <div style={styles.cartIconContainer}>
+
+
 
                 <img style={styles.cartIcon}
                     src="https://cdn-icons-png.flaticon.com/512/4290/4290854.png"
@@ -20,6 +25,7 @@ const Navbar = (props) => {
 
 
 const styles = {
+
     cartIcon: {
         height: 32,
         marginRight: 20
